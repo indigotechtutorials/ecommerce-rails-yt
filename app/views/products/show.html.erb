@@ -1,0 +1,36 @@
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="max-w-7xl w-full mx-auto px-10 mb-2"> 
+    <%= link_to "Products", products_path, class: "text-xl text-gray-100 hover:text-gray-200" %>
+    <%= link_to "> #{@product.name}", @product, class: "text-xl text-gray-100" %>
+  </div>
+  <div class="grid grid-cols-2">
+    <div class="max-w-md w-full mx-auto"> 
+      <%= image_tag @product.images.first, class: "w-full h-96 object-cover" %>
+      <div class="grid grid-cols-3 gap-4 mt-4"> 
+        <% @product.images[1..].each do |image| %>
+          <%= image_tag image, class: "w-full h-32 object-cover" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="max-w-xl"> 
+      <h1 class="text-5xl font-broken text-indigo-900"> <%= @product.name %> </h1>
+      <div class="text-gray-700"> 
+        <%= @product.description %>
+      </div>
+      <br/>
+      <span class="bg-green-500 p-2 rounded-lg text-green-50"> <%= number_to_currency @product.price %> </span>
+    </div>
+  </div>
+
+  <% if current_admin %>
+    <div class="w-full flex justify-center items-center mt-16 gap-4">
+      <%= link_to "Edit this product", edit_product_path(@product), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <%= link_to "Back to products", products_path, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <%= button_to "Destroy this product", @product, method: :delete, class: "rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    </div>
+  <% end %>
+</div>

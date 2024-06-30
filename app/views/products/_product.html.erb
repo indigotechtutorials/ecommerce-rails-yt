@@ -1,0 +1,7 @@
+<%= link_to product do %>
+  <div id="<%= dom_id product %>">
+    <%= image_tag product.images.first, class: "w-full h-80 object-cover rounded-lg hover:brightness-75 transition-all duration-250" if product.images.any? %>
+    <p class="text-lg text-gray-50"> <%= product.name %> </p>
+    <p class="text-lg text-gray-100"> <%= number_to_currency product.price %> </p>
+  </div>
+<% end %>
