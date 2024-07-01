@@ -31,6 +31,11 @@
     <%= form.text_field :price, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full bg-gray-100" %>
   </div>
 
+  <div class="my-5">
+    <%= form.label :category_id, "Category" %>
+    <%= form.select :category_id, options_from_collection_for_select(Category.all, 'id', 'name', product.category_id), { include_blank: true }, { class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full bg-gray-100" } %>
+  </div>
+
   <div class="inline">
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
