@@ -9,6 +9,8 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <meta name="stripe-pk" content="<%= Rails.application.credentials.dig(:stripe, :pk) %>">
+    <script src="https://js.stripe.com/v3/"></script>
   </head>
 
   <body class="bg-gradient-to-r from-indigo-500 via-purple-300 to-indigo-200">

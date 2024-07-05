@@ -19,13 +19,13 @@
         </div>
       <% end %>
     </div>
-    <div class="max-w-xl"> 
+    <div class="max-w-xl flex flex-col gap-4"> 
       <h1 class="text-5xl font-broken text-indigo-900"> <%= @product.name %> </h1>
       <div class="text-gray-700"> 
         <%= @product.description %>
       </div>
-      <br/>
-      <span class="bg-green-500 p-2 rounded-lg text-green-50"> <%= number_to_currency @product.price %> </span>
+      <span class="bg-green-500 p-2 rounded-lg text-green-50 mr-auto"> <%= number_to_currency @product.price %> </span>
+      <%= link_to "Buy Now", product_buy_now_path(@product), class: "rounded-lg font-semibold p-4 text-center text-xl bg-yellow-400 hover:bg-yellow-500 mr-auto w-64" %>
     </div>
   </div>
 

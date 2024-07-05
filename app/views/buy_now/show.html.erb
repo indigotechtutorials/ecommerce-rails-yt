@@ -1,0 +1,15 @@
+<div class="grid md:grid-cols-2">
+  <div class="w-full flex flex-col items-center md:pt-8">
+    <h1 class="text-5xl font-broken text-indigo-900 text-center"> <%= @product.name %> </h1>
+    <div class="max-w-2xl w-full"> 
+      <%= image_tag(@product.images.first, class: "w-full h-96 object-cover rounded-lg") if @product.images.any? %>
+      <div class="text-gray-100 text-lg mt-4"> 
+        <%= @product.description %>
+      </div>
+    </div>
+  </div>
+
+  <div data-controller="stripe-checkout" data-stripe-checkout-url-value="<%= product_buy_now_path(@product) %>"> 
+
+  </div>
+</div>
