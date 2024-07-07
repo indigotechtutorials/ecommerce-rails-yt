@@ -1,0 +1,16 @@
+<div class="w-full flex flex-col items-center md:pt-8">
+  <div class="h-[40vh] w-full mb-8 flex flex-col items-center justify-center gap-4 bg-repeat-round" style="background-image: url('<%= asset_path('animeflowers.gif') %>')">
+    <h2 class="text-5xl font-semibold text-indigo-100"> Thank you for purchasing! </h2>
+    <p class="text-xl font-semibold text-indigo-50"> All of your products will be shipped shortly </p> 
+  </div>
+  <h1 class="text-5xl font-broken text-indigo-900 text-center"> <%= @purchased_cart.products.map(&:name).join(", ") %> </h1>
+  <div class="mx-auto flex flex-col gap-2"> 
+    <% @purchased_cart.products.each.with_index do |product, index| %>
+      <div class="flex gap-2 bg-gray-700/75 p-2">
+        <span class="px-2 rounded-full bg-gray-500 text-gray-100"> <%= index + 1 %> </span>
+        <p class="text-indigo-100"> <%= product.name %> </p>
+        <p class="text-green-500"> <%= number_to_currency product.price %> </p>
+      </div>
+    <% end %>
+  </div>
+</div>

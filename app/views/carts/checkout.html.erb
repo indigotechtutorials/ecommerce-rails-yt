@@ -1,0 +1,19 @@
+<div class="w-full grid md:grid-cols-2">
+  <div class="w-full flex flex-col items-center md:pt-8">
+    <h1 class="text-5xl font-broken text-indigo-900 text-center"> Your Cart </h1>
+    <p> You have <%= @current_cart.cart_items.count %> products in your cart </p>
+    <div class="mx-auto flex flex-col gap-2"> 
+      <% @current_cart.products.each.with_index do |product, index| %>
+        <div class="flex gap-2 bg-gray-700/75 p-2">
+          <span class="px-2 rounded-full bg-gray-500 text-gray-100"> <%= index + 1 %> </span>
+          <p class="text-indigo-100"> <%= product.name %> </p>
+          <p class="text-green-500"> <%= number_to_currency product.price %> </p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div data-controller="stripe-checkout" data-stripe-checkout-url-value="<%= stripe_session_cart_path(@current_cart.secret_id) %>"> 
+
+  </div>
+</div>

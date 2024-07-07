@@ -1,0 +1,27 @@
+<div class="w-full flex flex-col items-center">
+  <div class="flex justify-between w-full items-center">  
+    <div class="flex flex-col gap-4">
+      <h1 class="text-5xl"> Your cart </h1>
+      <% if @current_cart.cart_items.any? %>
+        <p class="text-lg"> You have <%= @current_cart.cart_items.count %> items in your cart </p>
+      <% else %>
+        <p class="text-lg"> You don't have any items in your cart yet </p>
+      <% end %>
+    </div>
+
+    <%= link_to "Checkout Now", checkout_cart_path(@current_cart.secret_id), class: "rounded-lg font-semibold p-4 text-center text-xl bg-yellow-400 hover:bg-yellow-500" %>
+  </div>
+
+  <br/>
+  
+  <div id="products" class="min-w-full grid md:grid-cols-4 gap-8">
+    <% @current_cart.products.each do |product| %>
+      <div>
+        <%= render "products/product", product: product %>
+        <br/>
+        <%= link_to "Remove from cart", cart_path(@current_cart.secret_id, product_id: product.id), class: "p-2 rounded-lg bg-indigo-500 text-indigo-100",
+            data: { turbo_method: "delete" } %>
+      </div>
+    <% end %>
+  </div>
+</div>
